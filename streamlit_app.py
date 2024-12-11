@@ -4,7 +4,7 @@ import numpy as np
 import io
 
 # Judul aplikasi
-st.title("Image Transformation Tool")
+st.title("Alat Transformasi Gambar")
 
 # Upload gambar
 uploaded_image = st.file_uploader("Upload gambar (PNG atau JPG)", type=["png", "jpg", "jpeg"])
@@ -33,14 +33,14 @@ if uploaded_image:
     width, height = translated_image.size
     scaled_image = translated_image.resize((int(width * scale_factor), int(height * scale_factor)))
 
-    # **4. Shear Gambar**
-    shear_x = st.slider("Shear Horizontal", -1.0, 1.0, 0.0)
-    shear_y = st.slider("Shear Vertikal", -1.0, 1.0, 0.0)
+    # **4. Kemiringan Gambar (Shear)**
+    shear_x = st.slider("Kemiringan Horizontal", -1.0, 1.0, 0.0)
+    shear_y = st.slider("Kemiringan Vertikal", -1.0, 1.0, 0.0)
     shear_matrix = (1, shear_x, 0, shear_y, 1, 0)
     sheared_image = scaled_image.transform(scaled_image.size, Image.AFFINE, shear_matrix)
 
     # **5. Kecerahan Gambar**
-    brightness_factor = st.slider("Kecerahan", 0.0, 2.0, 1.0)
+    brightness_factor = st.slider("Atur Kecerahan", 0.0, 2.0, 1.0)
     brightness_enhancer = ImageEnhance.Brightness(sheared_image)
     brightened_image = brightness_enhancer.enhance(brightness_factor)
 
