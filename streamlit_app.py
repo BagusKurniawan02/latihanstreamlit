@@ -8,7 +8,7 @@ st.title("Image Transformation Tool")
 
 # Upload gambar
 uploaded_image = st.file_uploader("Upload gambar (PNG atau JPG)", type=["png", "jpg", "jpeg"])
-s
+
 if uploaded_image:
     # Baca gambar
     image = Image.open(uploaded_image)
